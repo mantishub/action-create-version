@@ -1,0 +1,35 @@
+name: "Create MantisHub Version"
+description: "An action to create version in MantisHub"
+
+inputs:
+  url:
+    description: "Base URL of the MantisHub API"
+    required: true
+  api-key:
+    description: "API key for authentication"
+    required: true
+  project:
+    description: "Project Name"
+    required: true
+  name:
+    description: "Name of the version"
+    required: true
+  description:
+    description: "Description of the version"
+    required: false
+  released:
+    description: "Set to true if the version is released"
+    required: false
+  obsolete:
+    description: "Set to true if the version is obsolete"
+    required: false
+  timestamp:
+    description: "Release date of the version"
+    required: false
+
+outputs:
+  version-id:
+    description: "The ID of the created version."
+runs:
+  using: "node20"
+  main: "index.js"
