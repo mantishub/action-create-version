@@ -151,7 +151,6 @@ async function createVersion(projectID, body) {
  */
 function validateInput(params) {
     const result = {};
-        console.log(params)
     // Validate and set the 'name' parameter (required and must be a string)
     if (typeof params.name === 'string' && params.name.trim() !== '') {
         result.name = params.name.trim();
