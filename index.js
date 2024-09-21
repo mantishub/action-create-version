@@ -1,4 +1,10 @@
-const https = require('https');
+/**************************************************************************
+ MantisHub GitHub Actions
+ Copyright (c) MantisHub - Victor Boctor
+ All rights reserved.
+ **************************************************************************/
+
+ const https = require('https');
 
 /**
  * Env variables from GitHub workflow input
@@ -22,6 +28,7 @@ async function run() {
     if (!params.url || !params.apiKey || !params.project || !params.name) {
         throw new Error("Project name, url, api-key and name inputs are required.");
     }
+
     const newVersion = await createNewVersion(params);
     console.log(`::set-output name=version-id::${newVersion.version.id}`);
     return newVersion.version.id;
@@ -65,9 +72,11 @@ async function httpRequest(url, method = 'GET', body = null) {
                 'Content-Type': 'application/json',
             }
         }
+
         if (body !== null) {
             options.body = JSON.stringify(body)
         }
+
         const req = https.request(url, options, (res) => {
             let data = '';
             res.on('data', (chunk) => {
@@ -83,12 +92,15 @@ async function httpRequest(url, method = 'GET', body = null) {
                 }
             });
         });
+
         if (body !== null) {
             req.write(JSON.stringify(body));
         }
+
         req.on('error', (e) => {
             reject(e); // Reject the promise with the error
         });
+
         req.end(); // End the request
     });
 }
@@ -180,4 +192,5 @@ function validateInput(params) {
     }
     return result;
 }
+
 run();

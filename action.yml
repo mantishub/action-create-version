@@ -30,6 +30,7 @@ inputs:
 outputs:
   version-id:
     description: "The ID of the created version."
+
 runs:
   using: "node20"
   main: "index.js"
