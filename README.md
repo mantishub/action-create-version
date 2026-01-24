@@ -181,13 +181,6 @@ jobs:
 
 Reference secrets in your workflow using `${{ secrets.MANTISHUB_API_KEY }}`.
 
-### Best Practices
-
-- Use separate API keys for different environments (staging/production)
-- Regularly rotate your API keys
-- Use the minimum required permissions for the API key
-- Consider using organization-level secrets for shared projects
-
 ## Troubleshooting
 
 ### Common Issues
